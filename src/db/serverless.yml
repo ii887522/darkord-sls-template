@@ -19,6 +19,7 @@ params:
     disableRollback: true
     deletionProtection: true
     pointInTimeRecovery: false
+    stagePrefix: stage_
     stageDashPrefix: stage-
   prod:
     profile: easyout
@@ -26,6 +27,7 @@ params:
     disableRollback: false
     deletionProtection: true
     pointInTimeRecovery: false
+    stagePrefix: ""
     stageDashPrefix: ""
 
 resources:
@@ -99,7 +101,7 @@ resources:
         PointInTimeRecoverySpecification:
           PointInTimeRecoveryEnabled: ${param:pointInTimeRecovery}
         TableClass: STANDARD
-        TableName: ${param:stageDashPrefix}{TODO:module-name}-hello
+        TableName: ${param:stagePrefix}{TODO:module-name}_hello
         TimeToLiveSpecification:
           AttributeName: expired_at
           Enabled: true
