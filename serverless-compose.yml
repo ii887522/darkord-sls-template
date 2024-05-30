@@ -1,13 +1,14 @@
 services:
-  {TODO:module-name}-layer:
-    path: src/layers
-  {TODO:module-name}-db:
+  module-db:
     path: src/db
     dependsOn:
-      # Let only {TODO:module-name}-layer deployed first, because {TODO:module-name}-layer will get credentials from developer to be reused for
+      # Let only module-db deployed first, because module-db will get credentials from developer to be reused for
       # subsequent service deployments
-      - {TODO:module-name}-layer
-  {TODO:module-name}-api:
+  module-funcs:
+    path: src/funcs
+    dependsOn:
+      - module-db
+  module-api:
     path: src/api
     dependsOn:
-      - {TODO:module-name}-layer
+      - module-db

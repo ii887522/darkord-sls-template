@@ -1,4 +1,4 @@
-service: {TODO:module-name}-db
+service: module-db
 frameworkVersion: "3"
 
 provider:
@@ -8,31 +8,29 @@ provider:
   region: ${param:region}
   disableRollback: ${param:disableRollback}
   deploymentBucket:
-    name: easyout-sls-${sls:stage}-deployment-bucket
+    name: darkord-sls-${sls:stage}-deployment-bucket
     serverSideEncryption: AES256
     blockPublicAccess: true
 
 params:
   stage:
-    profile: easyout-stage
+    profile: darkord-stage
     region: us-east-1
     disableRollback: true
     deletionProtection: true
     pointInTimeRecovery: false
     stagePrefix: stage_
-    stageDashPrefix: stage-
   prod:
-    profile: easyout
+    profile: darkord
     region: ap-southeast-1
     disableRollback: false
     deletionProtection: true
     pointInTimeRecovery: false
     stagePrefix: ""
-    stageDashPrefix: ""
 
 resources:
   Resources:
-    {TODO:moduleName}HelloTable:
+    moduleHelloTable:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
@@ -101,7 +99,7 @@ resources:
         PointInTimeRecoverySpecification:
           PointInTimeRecoveryEnabled: ${param:pointInTimeRecovery}
         TableClass: STANDARD
-        TableName: ${param:stagePrefix}{TODO:module-name}_hello
+        TableName: ${param:stagePrefix}module_hello
         TimeToLiveSpecification:
           AttributeName: expired_at
           Enabled: true

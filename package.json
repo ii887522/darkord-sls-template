@@ -1,21 +1,25 @@
 {
-  "name": "darkord-sls-{TODO:module-name}",
+  "name": "darkord-sls-template",
   "version": "1.0.0",
-  "description": "{TODO:module-description}",
+  "description": "Serverless template that contains common things to be imported into new microservices of Darkord",
   "scripts": {
     "deploy:stage": "cross-env AWS_SDK_LOAD_CONFIG=1 sls deploy --stage stage",
     "deploy:prod": "cross-env AWS_SDK_LOAD_CONFIG=1 sls deploy --stage prod --verbose",
-    "deploy:function": "cross-env AWS_SDK_LOAD_CONFIG=1 sls {TODO:module-name}-api:deploy function --stage stage -f"
+    "deploy:api": "cross-env AWS_SDK_LOAD_CONFIG=1 sls module-api:deploy --stage stage",
+    "deploy:api:function": "cross-env AWS_SDK_LOAD_CONFIG=1 sls module-api:deploy function --stage stage -f",
+    "deploy:db": "cross-env AWS_SDK_LOAD_CONFIG=1 sls module-db:deploy --stage stage",
+    "deploy:funcs": "cross-env AWS_SDK_LOAD_CONFIG=1 sls module-funcs:deploy --stage stage",
+    "deploy:funcs:function": "cross-env AWS_SDK_LOAD_CONFIG=1 sls module-funcs:deploy function --stage stage -f"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ii887522/darkord-sls-{TODO:module-name}.git"
+    "url": "git+https://github.com/ii887522/darkord-sls-template.git"
   },
   "author": "ii887522",
   "bugs": {
-    "url": "https://github.com/ii887522/darkord-sls-{TODO:module-name}/issues"
+    "url": "https://github.com/ii887522/darkord-sls-template/issues"
   },
-  "homepage": "https://github.com/ii887522/darkord-sls-{TODO:module-name}#readme",
+  "homepage": "https://github.com/ii887522/darkord-sls-template#readme",
   "devDependencies": {
     "@serverless/compose": "^1.3.0",
     "cross-env": "^7.0.3",
@@ -24,6 +28,7 @@
     "serverless-deployment-bucket": "^1.6.0",
     "serverless-iam-roles-per-function": "^3.2.0",
     "serverless-latest-layer-version": "^2.1.2",
-    "serverless-prune-plugin": "^2.0.2"
+    "serverless-prune-plugin": "^2.0.2",
+    "serverless-rust-plugin": "^0.3.3"
   }
 }
