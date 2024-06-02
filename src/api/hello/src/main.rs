@@ -54,7 +54,7 @@ struct HandlerResponse {
     verification_code: String, // todo: Only for testing purpose. To be removed
 }
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<(), Error> {
     common_tracing::init();
 

@@ -72,7 +72,6 @@ package:
 functions:
   hello:
     handler: hello
-    memorySize: 256
     package:
       patterns:
         - "hello/**"
