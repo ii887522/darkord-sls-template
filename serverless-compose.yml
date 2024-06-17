@@ -1,9 +1,8 @@
 services:
   module-db:
     path: src/db
-    dependsOn:
-      # Let only module-db deployed first, because module-db will get credentials from developer to be reused for
-      # subsequent service deployments
+    # Let only module-db deployed first, because module-db will get credentials from developer to be reused for
+    # subsequent service deployments
   module-funcs:
     path: src/funcs
     dependsOn:

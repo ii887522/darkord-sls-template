@@ -1,0 +1,7 @@
+[package]
+name = "module-lib"
+edition = "2021"
+rust-version = "1.78"
+
+[lints.rust]
+unsafe_code = "forbid"
