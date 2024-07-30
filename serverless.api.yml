@@ -39,13 +39,13 @@ params:
     logLevel: INFO
     stagePrefix: stage_
     stageDashPrefix: stage-
-    authorizerId: pmob2d
+    authorizerId: dviaui
 
   prod:
     profile: darkord
     region: ap-southeast-1
     memorySize: 256
-    logRetentionInDays: 7
+    logRetentionInDays: 14
     disableRollback: false
     restApiId: udz4iyqum3
     restApiRootResourceId: sonnsq55fh
@@ -61,9 +61,6 @@ custom:
     automatic: true
     includeLayers: true
     number: 5
-  rust:
-    cargoLambda:
-      docker: false
 
 package:
   individually: true
@@ -75,11 +72,11 @@ functions:
     handler: hello
     package:
       patterns:
-        - "hello/**"
+        - "functions/hello/**"
     iamRoleStatements:
       - Effect: Allow
         Action:
-          - ssm:GetParameter
+          - ssm:GetParametersByPath
         Resource:
           - arn:aws:ssm:${param:region}:${aws:accountId}:parameter/auth/api/token/session
       - Effect: Allow
@@ -92,6 +89,7 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:PutItem
+          - dynamodb:UpdateItem
         Resource:
           - arn:aws:dynamodb:${param:region}:${aws:accountId}:table/${param:stagePrefix}auth_user
     events:
@@ -102,7 +100,7 @@ functions:
 
 plugins:
   - serverless-better-credentials # Must be the first one in this list for this to work
-  - serverless-rust-plugin
+  - "@ii887522/serverless-rust-plugin"
   - serverless-prune-plugin
   - serverless-iam-roles-per-function
   - serverless-deployment-bucket
