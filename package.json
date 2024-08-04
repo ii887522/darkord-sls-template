@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ii887522/darkord-sls-template#readme",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "serverless": "^3.39.0",
+    "serverless": "^4.1.19",
     "serverless-better-credentials": "^2.0.0",
     "serverless-deployment-bucket": "^1.6.0",
     "serverless-iam-roles-per-function": "^3.2.0",
